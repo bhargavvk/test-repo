@@ -16,7 +16,7 @@ jobs:
       - name: SSH into local machine and run Docker Compose
         run: |
           ssh aaic@192.168.0.18 "
-          cd ~/deployments &&
+          cd ~/test &&
           docker-compose down &&
           docker-compose pull &&
           docker-compose up -d
