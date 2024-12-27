@@ -25,6 +25,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ~/test
-            git fetch origin main
-            git restore --source=origin/main docker-compose.yml
+            git pull origin main
             docker-compose up -d --build
