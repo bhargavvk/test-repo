@@ -3,4 +3,3 @@ services:
   hello-world:
     image: hello-world
     container_name: my-hello-world  # Add a custom container name
-    restart: "no"
