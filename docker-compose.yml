@@ -1,5 +1,6 @@
-version: "3.8"
+version: '3'
 services:
-  hello-world:
-    image: hello-world
-    container_name: my-hello-world  # Add a custom container name
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
