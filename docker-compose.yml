@@ -4,3 +4,5 @@ services:
     image: nginx:alpine
     ports:
       - "8080:80"
+  redis:  # Add this service
+    image: redis:alpine
