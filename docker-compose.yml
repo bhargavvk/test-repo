@@ -6,10 +6,3 @@ services:
       - "8080:80"
   redis:  # Add this service
     image: redis:alpine
-  mongo:    # New service
-    image: mongo:latest
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=password
-    ports:
-      - "27017:27017"
