@@ -6,11 +6,10 @@ services:
       - "8080:80"
   redis:  # Add this service
     image: redis:alpine
-  db:    # New service
-    image: postgres:alpine
+  mongo:    # New service
+    image: mongo:latest
     environment:
-      - POSTGRES_DB=testdb
-      - POSTGRES_USER=testuser
-      - POSTGRES_PASSWORD=testpass
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
     ports:
-      - "5432:5432"
+      - "27017:27017"
