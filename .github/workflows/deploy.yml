@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main
-
+    paths:
+      - 'docker-compose.yml'
+      
 jobs:
   deploy:
     name: SSH from Raspberry Pi to Local Server
@@ -23,6 +25,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ~/test
-            docker-compose down
-            docker-compose pull
-            docker-compose up -d
+            git fetch origin main
+            git restore --source=origin/main docker-compose.yml
+            docker-compose up -d --build
