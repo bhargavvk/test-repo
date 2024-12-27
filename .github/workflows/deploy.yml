@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'docker-compose.yml'
-      
 jobs:
   deploy:
     name: SSH from Raspberry Pi to Local Server
@@ -26,4 +23,5 @@ jobs:
           script: |
             cd ~/test
             git pull origin main
+            git checkout ${{ github.sha }}
             docker-compose up -d --build
