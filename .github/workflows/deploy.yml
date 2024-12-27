@@ -7,17 +7,22 @@ on:
 
 jobs:
   deploy:
+    name: SSH from Raspberry Pi to Local Server
     runs-on: self-hosted
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: SSH into local machine and run Docker Compose
-        run: |
-          ssh aaic@192.168.0.18 "
-          cd ~/test &&
-          docker-compose down &&
-          docker-compose pull &&
-          docker-compose up -d
-          "
+      - name: SSH into Local Server and Run Commands
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.LOCAL_SERVER_HOST }}
+          username: ${{ secrets.LOCAL_SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ~/test
+            docker-compose down
+            docker-compose pull
+            docker-compose up -d
